@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Routes, Route, NavLink } from "react-router-dom";
-import { getMovies } from "./themoviedbAPI";
+import getMovies from "./themoviedbAPI";
 import Movies from "./Movies/Movies";
 import Home from "./Home/Home";
 import NotFound from "./NotFound/NotFound";
@@ -19,13 +19,11 @@ const App = () => {
   
   const [movies, setMovies] = useState([])
 
-  useEffect(()=>{
-    if(movies === []){
-      getMovies().then(movies => setMovies(movies))
-      console.log(movies)
-    }
-    return
+ useEffect(()=>{
+    getMovies().then(m => {const list = m.results; return list})
+    
   })
+  
   
   return (
     <div
@@ -42,6 +40,11 @@ const App = () => {
         <StyledLink to="/movies">Movies</StyledLink>
       </nav>
       <h1>Trending today</h1>
+      <ul>
+      {movies.map(movie => (
+        <li key={movie.id}>{movie.title}</li>
+      ))}
+      </ul>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/movies" element={<Movies/>} />

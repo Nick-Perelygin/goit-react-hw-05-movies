@@ -6,7 +6,7 @@ axios.defaults.params = {
     language: 'uk'
 }
 
-export const getMovies = async () => {
+const getMovies = async () => {
     try {
       const { data } = await axios.get('trending/all/day', {
         params: {
@@ -17,4 +17,6 @@ export const getMovies = async () => {
     } catch (error) {
       throw new Error('Oops, there is no movies');
     }
-  };
+};
+
+export default getMovies
