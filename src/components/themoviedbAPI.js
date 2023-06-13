@@ -1,22 +1,10 @@
-import axios from 'axios';
+const getMovies = () => {
+  const api_key = '80849c20aa63241eb028c4e7b7d0f3a8';
+  const trending = '/trending/all/day';
 
-axios.defaults.baseURL = `https://api.themoviedb.org/3`;
-axios.defaults.params = {
-    api_key: `80849c20aa63241eb028c4e7b7d0f3a8`,
-    language: 'uk'
-}
-
-const getMovies = async () => {
-    try {
-      const { data } = await axios.get('trending/all/day', {
-        params: {
-          page: 1,
-        },
-      });
-      return data;
-    } catch (error) {
-      throw new Error('Oops, there is no movies');
-    }
+  return fetch(`https://api.themoviedb.org/3${trending}?api_key=${api_key}&page=1&language=un`)
+  .then(r => r.json())
+  .catch(err => alert(`${err}`));
 };
 
 export default getMovies
