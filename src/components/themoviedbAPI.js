@@ -25,7 +25,7 @@ const getDetailsMovies = (movie_id) => {
   .catch(err => alert(`${err}`));
 };
 
-const getCreditsMovies = ({movie_id}) => {
+const getCreditsMovies = (movie_id) => {
   const api_key = '80849c20aa63241eb028c4e7b7d0f3a8';
   const getMovies = `/movie/${movie_id}/credits`;
 
@@ -34,7 +34,7 @@ const getCreditsMovies = ({movie_id}) => {
   .catch(err => alert(`${err}`));
 };
 
-const getReviewsMovies = ({movie_id}) => {
+const getReviewsMovies = (movie_id) => {
   const api_key = '80849c20aa63241eb028c4e7b7d0f3a8';
   const getMovies = `/movie/${movie_id}/reviews`;
 

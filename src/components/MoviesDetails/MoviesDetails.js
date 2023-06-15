@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom"
+import { Outlet, useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import get from "../themoviedbAPI"
 
 export default function MoviesDetails () {
@@ -11,7 +12,9 @@ export default function MoviesDetails () {
     },[id]);
 
     return (
-        <div style={{display: 'flex'}}>
+        <>
+        <Link to={''}>Go home</Link>
+        <div style={{display: 'flex', marginTop: '40px'}}>
             {movie && <>
                 <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
                     alt={`${movie.title ?? movie.name}`} width='300px'/>
@@ -19,10 +22,16 @@ export default function MoviesDetails () {
                     <h3 style={{marginTop: '0px'}}>{movie.title ?? movie.name}</h3>
                     <h3>Overview:</h3>
                     <p>{movie.overview}</p>
-                    <h3>Genres 
-                    </h3>
+                    <h3>Average rating: {movie.vote_average} </h3>
                 </div>
             </>}
         </div>
+        <h2>Additional information</h2>
+        <ul>
+            <li><Link to={'cast'}>Cast</Link></li>
+            <li><Link to={'reviews'}>Reviews</Link></li>
+        </ul>
+        <Outlet/>
+        </>
     )
 }
