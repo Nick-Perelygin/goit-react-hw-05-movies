@@ -12,7 +12,7 @@ export default function Cast () {
 
     return (
         <ul>
-            {casts && casts.map(cast => (
+            {id && casts.map(cast => (
             <li key={cast.id}>
                 <p>{cast.name}</p>
                 <p>Character: {cast.character}</p>

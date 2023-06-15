@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function Reviews () {
     const [reviews, setReviews] = useState([])
     const {id} = useParams()
-    console.log(reviews)
+    
     useEffect(() => {
         get.getReviewsMovies(id).then(r => setReviews(r.results))
     },[id]);

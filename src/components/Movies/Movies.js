@@ -1,3 +1,4 @@
+import { Outlet, Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import get from "../themoviedbAPI"
 import Svg from './SearchSvg'
@@ -6,9 +7,8 @@ export default function Movies () {
     const [movies, setMovies] = useState([])
     const [changeValue, setChangeValue] = useState('')
     const [submitValue, setSubmitValue] = useState('')
+    const {id} = useParams()
 
-    console.log(movies)
-    console.log([submitValue])
     useEffect(() => {
         get.getSearchMovies(submitValue).then(r => setMovies(r.results))
     },[submitValue]);
@@ -34,14 +34,21 @@ export default function Movies () {
             </form>
 
             <ul>
-            {movies && movies.map(movie => (
-            <li key={movie.id}>
-                <p>{movie.original_title}</p>
-                <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
+                {movies && movies.map(movie => (
+                <li key={movie.id}>
+                    <Link to={`${movie.id}`}>
+                    <p>{movie.original_title}</p>
+                    <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
                     alt={`${movie.original_title}`} width='200px'/>
-            </li>
-            ))}
-        </ul>
+                    </Link>
+                </li>
+                ))}
+            </ul>
+            {id && <ul>
+                <li><Link to={'cast'}>Cast</Link></li>
+                <li><Link to={'reviews'}>Reviews</Link></li>
+            </ul>}
+            <Outlet/>
         </div>
     )
 }
