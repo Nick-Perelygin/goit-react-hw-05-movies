@@ -23,7 +23,6 @@ export default function Movies () {
     }
 
     return (
-        
         <div>
             <form onSubmit={onSubmit} style={{display: 'flex'}}>
                 <button type="submit"style={{fontSize: '40px', marginRight: '40px', height: '50px'}}> 

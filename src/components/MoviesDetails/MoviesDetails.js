@@ -12,7 +12,7 @@ export default function MoviesDetails () {
 
     return (
         <>
-        <Link to={''}>Go home</Link>
+        <Link to={'/'}>Go home</Link>
         <div style={{display: 'flex', marginTop: '40px'}}>
             {movie && <>
                 <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
