@@ -9,7 +9,7 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
-export default function Layout () {
+const Layout = () => {
     return (
         <div>
             <nav style={{marginBottom: '100px'}}>
@@ -24,3 +24,5 @@ export default function Layout () {
         </div>
     )
 }
+
+export default Layout

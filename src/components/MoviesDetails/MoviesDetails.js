@@ -1,9 +1,8 @@
+import { useEffect, useRef, useState, Suspense } from "react";
 import { Outlet, useParams, Link, useLocation } from "react-router-dom"
-import { useEffect, useRef, useState, lazy, Suspense } from "react";
+import get from '../themoviedbAPI';
 
-const get = lazy(() => import('../themoviedbAPI'))
-
-export default function MoviesDetails () {
+const MoviesDetails = () => {
     const [movie, setMovie] = useState({})
     const {id} = useParams()
     const location = useLocation()
@@ -39,3 +38,5 @@ export default function MoviesDetails () {
         </>
     )
 }
+
+export default MoviesDetails

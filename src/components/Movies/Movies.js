@@ -1,10 +1,9 @@
+import { useEffect, useState, Suspense } from "react";
 import { Outlet, Link, useParams, useSearchParams, useLocation } from "react-router-dom"
-import { useEffect, useState, lazy } from "react";
+import get from '../themoviedbAPI';
+import Svg from './SearchSvg';
 
-const get = lazy(() => import('../themoviedbAPI'))
-const Svg = lazy(() => import('./SearchSvg'))
-
-export default function Movies () {
+const Movies = () => {
     const [movies, setMovies] = useState([])
     const [changeValue, setChangeValue] = useState('')
     const [submitValue, setSubmitValue] = useSearchParams()
@@ -50,7 +49,11 @@ export default function Movies () {
                 <li><Link to={'cast'}>Cast</Link></li>
                 <li><Link to={'reviews'}>Reviews</Link></li>
             </ul>}
-            <Outlet/>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Outlet />
+            </Suspense>
         </div>
     )
 }
+
+export default Movies
