@@ -1,6 +1,7 @@
 import { Outlet, useParams, Link, useLocation } from "react-router-dom"
-import { useEffect, useRef, useState } from "react";
-import get from "../themoviedbAPI"
+import { useEffect, useRef, useState, lazy } from "react";
+
+const get = lazy(() => import('../themoviedbAPI'))
 
 export default function MoviesDetails () {
     const [movie, setMovie] = useState({})

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy } from "react";
 import { Link } from "react-router-dom";
-import get from "../themoviedbAPI"
+
+const get = lazy(() => import('../themoviedbAPI'))
 
 export default function Home () {
     const [movies, setMovies] = useState([])

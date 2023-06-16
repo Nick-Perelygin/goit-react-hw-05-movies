@@ -1,7 +1,8 @@
 import { Outlet, Link, useParams, useSearchParams, useLocation } from "react-router-dom"
-import { useEffect, useState } from "react";
-import get from "../themoviedbAPI"
-import Svg from './SearchSvg'
+import { useEffect, useState, lazy } from "react";
+
+const get = lazy(() => import('../themoviedbAPI'))
+const Svg = lazy(() => import('./SearchSvg'))
 
 export default function Movies () {
     const [movies, setMovies] = useState([])
