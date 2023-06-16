@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 
@@ -16,7 +17,9 @@ export default function Layout () {
                 <StyledLink to='movies'>Movies</StyledLink>
             </nav>
             <main>
-                <Outlet/>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Outlet />
+                </Suspense>
             </main>
         </div>
     )
