@@ -4,7 +4,7 @@ import get from "../themoviedbAPI"
 
 export default function Home () {
     const [movies, setMovies] = useState([])
-   
+    
     useEffect(() => {
         get.getTrendingMovies().then(r => setMovies(r.results))
     },[]);

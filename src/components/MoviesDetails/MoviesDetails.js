@@ -1,10 +1,12 @@
-import { Outlet, useParams, Link } from "react-router-dom"
-import { useEffect, useState } from "react";
+import { Outlet, useParams, Link, useLocation } from "react-router-dom"
+import { useEffect, useRef, useState } from "react";
 import get from "../themoviedbAPI"
 
 export default function MoviesDetails () {
     const [movie, setMovie] = useState({})
     const {id} = useParams()
+    const location = useLocation()
+    const locationRef = useRef(location.state?.from ?? '/')
     
     useEffect(() => {
         get.getDetailsMovies(id).then(movie => setMovie(movie))
@@ -12,7 +14,7 @@ export default function MoviesDetails () {
 
     return (
         <>
-        <Link to={'/'}>Go home</Link>
+        <Link to={locationRef.current}>Go back</Link>
         <div style={{display: 'flex', marginTop: '40px'}}>
             {movie && <>
                 <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 

@@ -13,7 +13,7 @@ export default function Layout () {
         <div>
             <nav style={{marginBottom: '100px'}}>
                 <StyledLink to="/" style={{marginRight: '200px'}}>Home</StyledLink>
-                <StyledLink to="/movies">Movies</StyledLink>
+                <StyledLink to='movies'>Movies</StyledLink>
             </nav>
             <main>
                 <Outlet/>
