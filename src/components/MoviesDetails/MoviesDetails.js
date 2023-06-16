@@ -1,5 +1,5 @@
 import { Outlet, useParams, Link, useLocation } from "react-router-dom"
-import { useEffect, useRef, useState, lazy } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 
 const get = lazy(() => import('../themoviedbAPI'))
 
@@ -33,7 +33,9 @@ export default function MoviesDetails () {
             <li><Link to={'cast'}>Cast</Link></li>
             <li><Link to={'reviews'}>Reviews</Link></li>
         </ul>
-        <Outlet/>
+        <Suspense fallback={<div>Loading...</div>}>
+            <Outlet/>
+        </Suspense>
         </>
     )
 }
