@@ -13,15 +13,18 @@ export default function Cast () {
     },[id]);
 
     return (
-        <ul>
-            {id && casts.map(cast => (
-            <li key={cast.id}>
-                <p>{cast.name}</p>
-                <p>Character: {cast.character}</p>
-                <img src={cast.profile_path ? `https://image.tmdb.org/t/p/original${cast.profile_path}` : defaultImgCast} 
+        <>
+            <ul>
+                {id && casts.map(cast => (
+                <li key={cast.id}>
+                    <p>{cast.name}</p>
+                    <p>Character: {cast.character}</p>
+                    <img src={cast.profile_path ? `https://image.tmdb.org/t/p/original${cast.profile_path}` : defaultImgCast} 
                     alt={`${cast.name}`} width='200px'/>
-            </li>
-            ))}
-        </ul>
+                </li>
+                ))}
+            </ul>
+            {casts.length === 0 && <p>We don't know the casts for this movie</p>}
+        </>
     )
 }

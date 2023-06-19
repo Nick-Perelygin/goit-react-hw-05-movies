@@ -5,7 +5,7 @@ const getTrendingMovies = () => {
   const getMovies = '/trending/all/day';
 
   return fetch(`${URL}${getMovies}?api_key=${api_key}&page=1&language=en-US`)
-  .then(r => r.json())
+  .then(response => response.json())
 };
 
 const getSearchMovies = (text) => {
@@ -13,7 +13,7 @@ const getSearchMovies = (text) => {
   const getMovies = '/search/movie';
 
   return fetch(`${URL}${getMovies}?api_key=${api_key}&query=${text}&page=1&language=en-US`)
-  .then(r => r.json())
+  .then(response => response.json())
 };
 
 const getDetailsMovies = (movie_id) => {
@@ -21,7 +21,7 @@ const getDetailsMovies = (movie_id) => {
   const getMovies = `/movie/${movie_id}`;
   
   return fetch(`${URL}${getMovies}?api_key=${api_key}&page=1&language=en-US`)
-  .then(r => r.json())
+  .then(response => response.json())
 };
 
 const getCreditsMovies = (movie_id) => {
@@ -29,7 +29,7 @@ const getCreditsMovies = (movie_id) => {
   const getMovies = `/movie/${movie_id}/credits`;
 
   return fetch(`${URL}${getMovies}?api_key=${api_key}&page=1&language=en-US`)
-  .then(r => r.json())
+  .then(response => response.json())
 };
 
 const getReviewsMovies = (movie_id) => {
@@ -37,7 +37,7 @@ const getReviewsMovies = (movie_id) => {
   const getMovies = `/movie/${movie_id}/reviews`;
 
   return fetch(`${URL}${getMovies}?api_key=${api_key}&page=1&language=en-US`)
-  .then(r => r.json())
+  .then(response => response.json())
 };
 
 const get = {getTrendingMovies, getSearchMovies, getDetailsMovies, getCreditsMovies, getReviewsMovies}

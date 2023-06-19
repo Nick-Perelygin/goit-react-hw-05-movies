@@ -1,29 +1,32 @@
 import { useEffect, useState, Suspense } from "react";
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet, useLocation, useSearchParams } from "react-router-dom"
 import get from '../../components/themoviedbAPI';
 import {MoviesSearchList} from '../../components/MoviesList/MoviesList'
 import Form from '../../components/Form/Form'
 
 const Movies = () => {
     const [movies, setMovies] = useState([])
-    const [value, setValue] = useState('')
+    const [value, setValue] = useSearchParams()
+    
     const loc = useLocation()
     const location = useLocation(loc.state?.from)
 
-    const onSubmitValue = (value) => {
-        setValue(value)
+    const onSubmit = (data) => {
+        if(data === '')
+        {return setValue({})}
+        setValue({query: data})
     }
     
     useEffect(() => {
-        get.getSearchMovies(value).then(r => {if(r.total_results === 0 && value)
-            {alert(`Nothing found for your search ${value}`)} setMovies(r.results)})
+        const text = value.get("query") ?? '';
+        get.getSearchMovies(text).then(r => {if(r.total_results === 0 && text)
+            {alert(`Nothing found for your search ${text}`); setValue({})} setMovies(r.results)})
         .catch(err => alert(`${err}`));
-        setValue('')
-    },[value]);
+    },[setValue, value]);
 
     return (
         <div>
-            <Form onSubmitForm={onSubmitValue}/>
+            <Form onSubmitForm={onSubmit}/>
             <MoviesSearchList movies={movies} state={{from: location}}/>
             <Suspense fallback={<div>Loading...</div>}>
                 <Outlet />
