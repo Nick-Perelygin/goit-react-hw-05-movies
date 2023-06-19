@@ -6,7 +6,6 @@ const getTrendingMovies = () => {
 
   return fetch(`${URL}${getMovies}?api_key=${api_key}&page=1&language=en-US`)
   .then(r => r.json())
-  .catch(err => alert(`${err}`));
 };
 
 const getSearchMovies = (text) => {
@@ -15,7 +14,6 @@ const getSearchMovies = (text) => {
 
   return fetch(`${URL}${getMovies}?api_key=${api_key}&query=${text}&page=1&language=en-US`)
   .then(r => r.json())
-  .catch(err => alert(`${err}`));
 };
 
 const getDetailsMovies = (movie_id) => {
@@ -24,7 +22,6 @@ const getDetailsMovies = (movie_id) => {
   
   return fetch(`${URL}${getMovies}?api_key=${api_key}&page=1&language=en-US`)
   .then(r => r.json())
-  .catch(err => alert(`${err}`));
 };
 
 const getCreditsMovies = (movie_id) => {
@@ -33,7 +30,6 @@ const getCreditsMovies = (movie_id) => {
 
   return fetch(`${URL}${getMovies}?api_key=${api_key}&page=1&language=en-US`)
   .then(r => r.json())
-  .catch(err => alert(`${err}`));
 };
 
 const getReviewsMovies = (movie_id) => {
@@ -42,7 +38,6 @@ const getReviewsMovies = (movie_id) => {
 
   return fetch(`${URL}${getMovies}?api_key=${api_key}&page=1&language=en-US`)
   .then(r => r.json())
-  .catch(err => alert(`${err}`));
 };
 
 const get = {getTrendingMovies, getSearchMovies, getDetailsMovies, getCreditsMovies, getReviewsMovies}

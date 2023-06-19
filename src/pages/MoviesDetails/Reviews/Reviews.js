@@ -1,4 +1,4 @@
-import get from "../themoviedbAPI"
+import get from "../../../components/themoviedbAPI"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 
@@ -7,7 +7,7 @@ export default function Reviews () {
     const {id} = useParams()
     
     useEffect(() => {
-        get.getReviewsMovies(id).then(r => setReviews(r.results))
+        get.getReviewsMovies(id).then(r => setReviews(r.results)).catch(err => alert(`${err}`));
     },[id]);
 
     return (

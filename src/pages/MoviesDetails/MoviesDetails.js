@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, Suspense } from "react";
 import { Outlet, useParams, Link, useLocation } from "react-router-dom"
-import get from '../themoviedbAPI';
+import get from '../../components/themoviedbAPI';
 
 const MoviesDetails = () => {
     const [movie, setMovie] = useState({})
@@ -9,7 +9,7 @@ const MoviesDetails = () => {
     const locationRef = useRef(location.state?.from ?? '/')
     
     useEffect(() => {
-        get.getDetailsMovies(id).then(movie => setMovie(movie))
+        get.getDetailsMovies(id).then(movie => setMovie(movie)).catch(err => alert(`${err}`));
     },[id]);
 
     return (
